@@ -60,7 +60,7 @@ public class Home_Page extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 520));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 640));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Donor.png"))); // NOI18N
         jMenu1.setText("Donor");
@@ -185,7 +185,7 @@ public class Home_Page extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new addNewDonor().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -194,7 +194,7 @@ public class Home_Page extends javax.swing.JFrame {
         int a=JOptionPane.showConfirmDialog(null,"Do you really want to logout","Select",JOptionPane.YES_NO_OPTION);
 if(a==0)
 {
-	//setVisible(false);
+	setVisible(false);
 	new login().setVisible(true);
 }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
