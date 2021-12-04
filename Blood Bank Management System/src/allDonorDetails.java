@@ -7,6 +7,10 @@
  *
  * @author DELL
  */
+import java.sql.*;
+import Project.ConnectionProvider;
+import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 public class allDonorDetails extends javax.swing.JFrame {
 
     /**
@@ -94,12 +98,23 @@ public class allDonorDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
+        try
+        {
+            Connection con=ConnectionProvider.getCon();
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery("SELECT * FROM DONOR ");
+            jTable1.setAutoResizeMode(jTable1.AUTO_RESIZE_OFF);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch(Exception e)
+        {
+           System.out.println(e); 
+        }
     }//GEN-LAST:event_formComponentShown
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String donorId = jLabel3.getText();
+        /*String donorId = jLabel3.getText();
         String name = jTextField1.getText();
         String fatherName = jTextField2.getText();
         String motherName = jTextField3.getText();
@@ -110,15 +125,14 @@ public class allDonorDetails extends javax.swing.JFrame {
         String bloodGroup =(String) jComboBox2.getSelectedItem();
         String city = jTextField7.getText();
         String address = jTextArea1.getText();
+        */
 
         try
         {
-            Connection con=ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"',)");
-            JOptionPane.showMessageDialog(null, "Successfully Updated");
-            setVisible(false);
-            new addNewDonor().setVisible(true);
+            jTable1.print(JTable.PrintMode.NORMAL);
+           
+            //setVisible(false);
+           // new addNewDonor().setVisible(true);
         }
         catch(Exception e)
         {

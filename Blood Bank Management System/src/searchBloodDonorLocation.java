@@ -7,6 +7,10 @@
  *
  * @author DELL
  */
+import javax.swing.*;
+import java.sql.*;
+import Project.ConnectionProvider;
+import net.proteanit.sql.DbUtils;
 public class searchBloodDonorLocation extends javax.swing.JFrame {
 
     /**
@@ -54,6 +58,16 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 87, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 180, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 128, 685, 10));
 
@@ -102,7 +116,7 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String donorId = jLabel3.getText();
+        /*String donorId = jLabel3.getText();
         String name = jTextField1.getText();
         String fatherName = jTextField2.getText();
         String motherName = jTextField3.getText();
@@ -127,12 +141,46 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
         {
             System.out.println(e);
         }
+        */
+        try
+        {
+            jTable1.print(JTable.PrintMode.NORMAL);
+           
+            //setVisible(false);
+           // new addNewDonor().setVisible(true);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        String location=jTextField1.getText();
+        try
+        {
+            Connection con=ConnectionProvider.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs=st.executeQuery("select * from donor where city like '%"+location+"%' or address like '%"+location+"%'");
+            jTable1.setAutoResizeMode(jTable1.AUTO_RESIZE_OFF);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
