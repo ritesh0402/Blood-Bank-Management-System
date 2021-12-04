@@ -108,28 +108,15 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Shift+I"/>
+                  <KeyStroke key="Shift+U"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Inc.png"/>
+                  <Image iconType="3" name="/Update details.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Increase"/>
+                <Property name="text" type="java.lang.String" value="Update"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Shift+D"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Dec.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Decrease"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator5">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>

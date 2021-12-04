@@ -40,8 +40,6 @@ public class Home_Page extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -119,17 +117,11 @@ public class Home_Page extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stock.png"))); // NOI18N
         jMenu3.setText("Stock");
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Inc.png"))); // NOI18N
-        jMenuItem6.setText("Increase");
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Update details.png"))); // NOI18N
+        jMenuItem6.setText("Update");
         jMenu3.add(jMenuItem6);
         jMenu3.add(jSeparator4);
-
-        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dec.png"))); // NOI18N
-        jMenuItem7.setText("Decrease");
-        jMenu3.add(jMenuItem7);
-        jMenu3.add(jSeparator5);
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Details.png"))); // NOI18N
@@ -268,14 +260,12 @@ if(a==0)
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     // End of variables declaration//GEN-END:variables
 }
