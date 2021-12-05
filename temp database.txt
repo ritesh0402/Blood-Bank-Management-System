@@ -1,0 +1,36 @@
+create database bbms;
+
+use bbms;
+
+create table donor
+(donorId int(10) primary key,
+name varchar(100),
+fatherName varchar(100),
+motherName varchar(100),
+DOB varchar(20),
+MobileNo varchar(10),
+gender varchar(10),
+email varchar(100),
+bloodGroup varchar(10),
+city  varchar(100),
+address varchar(500));
+
+create table stock
+(bloodGroup varchar(20),
+units int(10));
+
+mysql> insert into stock values("A+", 0);
+
+mysql> insert into stock values("A-", 0);
+
+mysql> insert into stock values("B+", 0);
+
+mysql> insert into stock values("B-", 0);
+
+mysql> insert into stock values("O+", 0);
+
+mysql> insert into stock values("O-", 0);
+
+mysql> insert into stock values("AB+", 0);
+
+mysql> insert into stock values("AB-", 0);
