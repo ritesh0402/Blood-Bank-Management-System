@@ -10,6 +10,7 @@
 import java.sql.*;
 import javax.swing.*;
 import Project.ConnectionProvider;
+import net.proteanit.sql.DbUtils;
 public class stockUpdate extends javax.swing.JFrame {
 
     /**
@@ -48,6 +49,11 @@ public class stockUpdate extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 130));
         setUndecorated(true);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -146,6 +152,29 @@ public class stockUpdate extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String bloodGroup=(String)jComboBox2.getSelectedItem();
+
+String unit=jTextField7.getText();
+int uniti=Integer.parseInt(unit);
+
+try
+{
+	Connection con=ConnectionProvider.getCon();
+	Statement st=con.createStatement();
+	
+	
+	
+	st.executeUpdate("update stock set units=units+'"+uniti+"'where bloodGroup='"+bloodGroup+"'");
+	
+	JOptionPane.showMessageDialog(null,"Successfully Updated");
+	setVisible(false);
+	new stockUpdate().setVisible(true);
+}
+
+catch(Exception e)
+{
+	JOptionPane.showMessageDialog(null,e);
+}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -154,91 +183,65 @@ public class stockUpdate extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
-        String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
-        String address = jTextArea1.getText();
-
-        try
-        {
-            Connection con=ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"')");
-            JOptionPane.showMessageDialog(null, "Successfully Updated");
-            setVisible(false);
-            new addNewDonor().setVisible(true);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
-        String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
-        String address = jTextArea1.getText();
+            String bloodGroup=(String)jComboBox2.getSelectedItem();
 
-        try
-        {
-            Connection con=ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"',)");
-            JOptionPane.showMessageDialog(null, "Successfully Updated");
-            setVisible(false);
-            new addNewDonor().setVisible(true);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
+String unit=jTextField7.getText();
+int uniti=Integer.parseInt(unit);
+
+try
+{
+	Connection con=ConnectionProvider.getCon();
+	Statement st=con.createStatement();
+	
+	
+	
+	st.executeUpdate("update stock set units=units-'"+uniti+"'where bloodGroup='"+bloodGroup+"'");
+	
+	JOptionPane.showMessageDialog(null,"Successfully Updated");
+	setVisible(false);
+	new stockUpdate().setVisible(true);
+}
+
+catch(Exception e)
+{
+	JOptionPane.showMessageDialog(null,e);
+}   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
-        String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
-        String address = jTextArea1.getText();
-
         try
         {
-            Connection con=ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"',)");
-            JOptionPane.showMessageDialog(null, "Successfully Updated");
-            setVisible(false);
-            new addNewDonor().setVisible(true);
+            jTable1.print(JTable.PrintMode.NORMAL);
+           
+            //setVisible(false);
+           // new addNewDonor().setVisible(true);
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        try
+{
+	Connection con=ConnectionProvider.getCon();
+	Statement st=con.createStatement();
+	ResultSet rs=st.executeQuery("select * from stock");
+	jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+}
+catch(Exception e)
+{
+	JOptionPane.showMessageDialog(null,e);
+	
+}
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments

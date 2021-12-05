@@ -46,11 +46,9 @@ public class updateDetailsDonor extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -60,6 +58,10 @@ public class updateDetailsDonor extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,10 +136,6 @@ public class updateDetailsDonor extends javax.swing.JFrame {
         jLabel9.setText("Gender: ");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 163, -1));
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("E-mail: ");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
@@ -148,10 +146,6 @@ public class updateDetailsDonor extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Blood Group");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
-
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 156, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("City: ");
@@ -202,6 +196,23 @@ public class updateDetailsDonor extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 425, 685, 10));
 
+        jTextField9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 156, -1));
+
+        jTextField10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 163, -1));
+
+        jTextField11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 156, -1));
+
+        jTextField12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField12ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 163, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/peach-puff-solid-color-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 500));
@@ -215,30 +226,30 @@ public class updateDetailsDonor extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
+        String donorId = jTextField1.getText();
+        String name = jTextField2.getText();
+        String fatherName = jTextField3.getText();
+        String motherName = jTextField4.getText();
         String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
+        String MobileNo = jTextField5.getText();
+        String gender =jTextField12.getText();
+        String email = jTextField7.getText();
+        String bloodGroup =jTextField11.getText();
+        String city = jTextField8.getText();
         String address = jTextArea1.getText();
-
+        
         try
         {
             Connection con=ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"')");
+            st.executeUpdate("update donor set name='"+name+"', fatherName='"+fatherName+"', motherName='"+motherName+"', DOB='"+DOB+"', MobileNo='"+MobileNo+"', gender='"+gender+"', email='"+email+"', bloodGroup='"+bloodGroup+"', city='"+city+"', address='"+address+"' where donorId='"+donorId+"'");
             JOptionPane.showMessageDialog(null, "Successfully Updated");
             setVisible(false);
-            new addNewDonor().setVisible(true);
+            new updateDetailsDonor().setVisible(true);
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -255,8 +266,45 @@ public class updateDetailsDonor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+    String donorId=jTextField1.getText();
+    //int id = Integer.parseInt(donorId);
+    try
+    {
+	Connection con=ConnectionProvider.getCon();
+	Statement st=con.createStatement();
+	ResultSet rs = st.executeQuery("select * from donor where donorId='"+donorId+"'");
+	if(rs.next())
+	{
+		jTextField2.setText(rs.getString(2));
+		jTextField3.setText(rs.getString(3));
+		jTextField4.setText(rs.getString(4));
+		jTextField6.setText(rs.getString(5));
+		jTextField5.setText(rs.getString(6));
+		jTextField12.setText(rs.getString(7));
+		jTextField7.setText(rs.getString(8));
+		jTextField11.setText(rs.getString(9));
+		jTextField8.setText(rs.getString(10));
+		jTextArea1.setText(rs.getString(11));
+		jTextField1.setEditable(false);
+	}
+
+    
+	else
+	{
+		JOptionPane.showMessageDialog(null,"DonorId does not exist");
+	}
+
+    }
+
+    catch(Exception e)
+    {
+	JOptionPane.showMessageDialog(null,e);
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,8 +346,6 @@ public class updateDetailsDonor extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -320,6 +366,9 @@ public class updateDetailsDonor extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -327,5 +376,6 @@ public class updateDetailsDonor extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

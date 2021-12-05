@@ -8,6 +8,7 @@
  * @author DELL
  */
 import javax.swing.*;
+import javax.swing.JTable;
 import Project.ConnectionProvider;
 import java.sql.*;
 
@@ -87,6 +88,12 @@ public class allDonorDetails extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Title 1");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Title 2");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Title 3");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 81, 728, 333));
 
@@ -108,25 +115,13 @@ public class allDonorDetails extends javax.swing.JFrame {
         }
         catch(Exception e)
         {
-           System.out.println(e); 
+           JOptionPane.showMessageDialog(null, e); 
         }
     }//GEN-LAST:event_formComponentShown
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        /*String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
-        String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
-        String address = jTextArea1.getText();
-        */
-
+       
         try
         {
             jTable1.print(JTable.PrintMode.NORMAL);
@@ -136,7 +131,7 @@ public class allDonorDetails extends javax.swing.JFrame {
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -44,6 +44,11 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(340, 130));
         setUndecorated(true);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
@@ -114,33 +119,7 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        /*String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
-        String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
-        String address = jTextArea1.getText();
-
-        try
-        {
-            Connection con=ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"',)");
-            JOptionPane.showMessageDialog(null, "Successfully Updated");
-            setVisible(false);
-            new addNewDonor().setVisible(true);
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-        */
+        
         try
         {
             jTable1.print(JTable.PrintMode.NORMAL);
@@ -150,7 +129,7 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -177,9 +156,25 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        try
+        {
+            Connection con=ConnectionProvider.getCon();
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery("SELECT * FROM DONOR ");
+            jTable1.setAutoResizeMode(jTable1.AUTO_RESIZE_OFF);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch(Exception e)
+        {
+           JOptionPane.showMessageDialog(null, e); 
+        }
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments

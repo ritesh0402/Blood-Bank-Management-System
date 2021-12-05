@@ -10,6 +10,7 @@
 import java.sql.*;
 import javax.swing.*;
 import Project.ConnectionProvider;
+import net.proteanit.sql.DbUtils;
 public class stockDetails extends javax.swing.JFrame {
 
     /**
@@ -97,34 +98,32 @@ public class stockDetails extends javax.swing.JFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
+        try
+{
+	Connection con=ConnectionProvider.getCon();
+	Statement st=con.createStatement();
+	ResultSet rs=st.executeQuery("select * from stock");
+	jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+}
+catch(Exception e)
+{
+	JOptionPane.showMessageDialog(null,e);
+	
+}
     }//GEN-LAST:event_formComponentShown
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String donorId = jLabel3.getText();
-        String name = jTextField1.getText();
-        String fatherName = jTextField2.getText();
-        String motherName = jTextField3.getText();
-        String DOB = jTextField6.getText();
-        String MobileNo = jTextField4.getText();
-        String gender =(String) jComboBox1.getSelectedItem();
-        String email = jTextField5.getText();
-        String bloodGroup =(String) jComboBox2.getSelectedItem();
-        String city = jTextField7.getText();
-        String address = jTextArea1.getText();
-
         try
         {
-            Connection con=ConnectionProvider.getCon();
-            Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"')");
-            JOptionPane.showMessageDialog(null, "Successfully Updated");
-            setVisible(false);
-            new addNewDonor().setVisible(true);
+            jTable1.print(JTable.PrintMode.NORMAL);
+           
+            //setVisible(false);
+           // new addNewDonor().setVisible(true);
         }
         catch(Exception e)
         {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
