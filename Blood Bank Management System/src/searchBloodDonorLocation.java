@@ -7,8 +7,8 @@
  *
  * @author DELL
  */
-import javax.swing.*;
 import java.sql.*;
+import javax.swing.*;
 import Project.ConnectionProvider;
 import net.proteanit.sql.DbUtils;
 public class searchBloodDonorLocation extends javax.swing.JFrame {
@@ -42,7 +42,6 @@ public class searchBloodDonorLocation extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setLocation(new java.awt.Point(340, 130));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

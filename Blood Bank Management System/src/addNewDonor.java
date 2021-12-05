@@ -60,8 +60,8 @@ public class addNewDonor extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setLocation(new java.awt.Point(340, 130));
+        setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -224,7 +224,7 @@ public class addNewDonor extends javax.swing.JFrame {
 
 catch(Exception e)
 {
-	System.out.println(e);
+	JOptionPane.showMessageDialog(null, e);
 }
     }//GEN-LAST:event_formComponentShown
 
@@ -249,6 +249,7 @@ catch(Exception e)
         String name = jTextField1.getText();
         String fatherName = jTextField2.getText();
         String motherName = jTextField3.getText();
+//        SimpleDateFormat dFormat=new SimpleDateFormat("dd-MM-yyyy");
         String DOB = jTextField6.getText();
         String MobileNo = jTextField4.getText();
         String gender =(String) jComboBox1.getSelectedItem();
@@ -261,7 +262,7 @@ catch(Exception e)
         {
             Connection con=ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"',)");
+            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"')");
             JOptionPane.showMessageDialog(null, "Successfully Updated");
             setVisible(false);
             new addNewDonor().setVisible(true);

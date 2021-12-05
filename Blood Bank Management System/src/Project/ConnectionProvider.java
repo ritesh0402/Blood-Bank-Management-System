@@ -13,7 +13,7 @@ public class ConnectionProvider {
 {
 	try
 	{
-            Class.forName("com.mysql.jdbc.driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bbms","root","R04022002r*");
             return con;
 	}

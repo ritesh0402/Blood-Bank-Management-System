@@ -7,6 +7,9 @@
  *
  * @author DELL
  */
+import java.sql.*;
+import javax.swing.*;
+import Project.ConnectionProvider;
 public class stockDetails extends javax.swing.JFrame {
 
     /**
@@ -35,7 +38,6 @@ public class stockDetails extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setLocation(new java.awt.Point(340, 130));
         setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -115,7 +117,7 @@ public class stockDetails extends javax.swing.JFrame {
         {
             Connection con=ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"',)");
+            st.executeUpdate("insert into donor values('"+donorId+"','"+name+"','"+fatherName+"','"+motherName+"','"+DOB+"','"+MobileNo+"','"+gender+"','"+email+"','"+bloodGroup+"','"+city+"','"+address+"')");
             JOptionPane.showMessageDialog(null, "Successfully Updated");
             setVisible(false);
             new addNewDonor().setVisible(true);
